@@ -1,0 +1,23 @@
+1. a) A processor is like a cpu, which carries out operations. Inside the processor, there are cores, which receive and execute instructions.
+b) 32
+c) 8
+d) 800.115, 901.808, 892.661, 921.020, 896.330, 898.161, 852.225, 853.413 all in MHz
+e) 7885480 KB
+f) 1189312 kB
+g) 34336
+h) 183140653
+
+2. a) 78675
+b) The process uses averagely 99.7% CPU(one processor) and consumes 516kB actual memory and 2356kB virtual memory.
+c) running
+
+3. a) 87067
+b) 1 -> 2224 -> 87022 -> 87033 -> 87067
+c) When we redirect the output, the file descriptor 1 points to the output file we specified, similarly file descriptor 0 points for input file and file descriptor 2 points for error file(if redirected).
+d) When we use a pipe, the output of first command is redirected to the input of the second command using a one way communication device called a pipe, by making the output file descriptor of the first program point to the input end of the pipe and the input file descriptor of second process points to output end of pipe.
+e) cd and history are built-in whereas, ls and ps are implemented by bash code.
+
+4. memory1 uses 6276 KB of virtual memory, while 6276 KB is used by memory2, as expected because, even though the array is accessed or not, if it's declared, then memory is allocated for it in the stack. But, memory1 uses 4932kB of actual memory, while 4936kB is used by memory2.The actual memory on RAM is higher for memory2 because it accesses it's array,so pages need to be present on RAM. On the other hand, memory1 doesn't access the array, so maybe it's pages got swapped to disk and it's space on RAM is less(this is random because what pages the OS swaps and also, when to swap is determined by the OS and not known to us). In this case, the memories occupied are approximately equal and almost the expected size from the array. So, maybe all the pages of both processes are on the RAM(except that memory1 has one page less)(After seeing the discussion on moodle, I came to know it's a compiler thing).
+
+5. The disk utilization is between 24MB/s to 34MB/s for the program that accesses files randomly, but whereas, the disk utilization is almost 0 for the program that accesses a single file. This is due to the disk buffer cache that stores recently accessed files. So, the program that access only a single file accesses it from the buffer after first access thus not increasing the disk utilization, which is exactly opposite to the case with the program that accesses files randomly, which may or may not has the file it needs in the buffer, thereby increasing disk utilization.
+Note: I reported the average disk utilizations for both the processes, but, the process that accesses only one file has peak disk utilization of 24MB/s which is when the file that it accesses is not in the disk buffer.
